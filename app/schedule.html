@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Scheduler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/bootstrap-table/bootstrap-table.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/schedule.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9">
+            <div id="schedule-container"></div>
+        </div>
+
+        <div id="metrics" class="col-md-3">
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon" id="commandInputLabel"><i class="fa fa-terminal"></i></span>
+                    <input id="commandInput" type="text" class="form-control input-sm" placeholder="Enter a command..."
+                           aria-describedby="commandInputLabel">
+                </div>
+            </div>
+            <div class="form-group" id="totalCredits">
+                <div class="input-group">
+                    <label for="totalCreditsInput" class="control-label">Total Credits</label>
+                    <input type="text" id="totalCreditsInput" class="form-control input-sm custom-width" readonly>
+                </div>
+            </div>
+            <div class="form-group" id="class">
+                <div class="input-group">
+                    <label for="classInput" class="control-label">Class Standing</label>
+                    <input type="text" id="classInput" class="form-control input-sm custom-width" readonly>
+                </div>
+            </div>
+            <div class="form-group" id="honors">
+                <div class="input-group">
+                    <label for="honorsInput" class="control-label">Latin Honors</label>
+                    <input type="text" id="honorsInput" class="form-control input-sm custom-width" readonly>
+                </div>
+            </div>
+            <div class="form-group" id="totalGPA">
+                <div class="input-group">
+                    <label for="totalGPAInput" class="control-label">Cumulative GPA</label>
+                    <input type="text" id="totalGPAInput" class="form-control input-sm custom-width" readonly>
+                </div>
+            </div>
+            <div class="form-group" id="institutionalGPA">
+                <div class="input-group">
+                    <label for="institutionalGPAInput" class="control-label">Institutional GPA</label>
+                    <input type="text" id="institutionalGPAInput" class="form-control input-sm custom-width" readonly>
+                </div>
+            </div>
+            <script type="text/x-handlebars-template" id="template-majors">
+                {{#each objects}}
+                <div class="form-group" id="majorGPA-{{@index}}-div">
+                    <div class="input-group">
+                        <label for="majorGPA-{{@index}}" class="control-label">Major GPA ({{this}})</label>
+                        <input type="text" id="majorGPA-{{@index}}" class="form-control input-sm custom-width" readonly>
+                    </div>
+                </div>
+                {{/each}}
+            </script>
+            <script type="text/x-handlebars-template" id="template-minors">
+                {{#each objects}}
+                <div class="form-group" id="minorGPA-{{@index}}-div">
+                    <div class="input-group">
+                        <label for="minorGPA-{{@index}}" class="control-label">Minor GPA ({{this}})</label>
+                        <input type="text" id="minorGPA-{{@index}}" class="form-control input-sm custom-width" readonly>
+                    </div>
+                </div>
+                {{/each}}
+            </script>
+        </div>
+    </div>
+</div>
+<script>
+    window.$ = window.jQuery = require('./vendor/jquery/jquery-2.1.4.min.js');
+</script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/handlebars/handlebars-v4.0.5.js"></script>
+<script src="js/util.js"></script>
+<script src="vendor/jquery/mindmup/mindmup-editabletable.js"></script>
+<script src="vendor/bootstrap/bootstrap-table/bootstrap-table.js"></script>
+<script src="js/schedule.js"></script>
+<script>
+    initSchedule();
+    $('#commandInput').select();
+    $('#mainTable').editableTableWidget().stateChange();
+    $('#textAreaEditor').editableTableWidget({editor: $('<input>')});
+</script>
+</body>
+</html>

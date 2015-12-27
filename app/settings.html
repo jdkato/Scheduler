@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Scheduler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div id="currentSchedules" class="panel panel-default sidebar">
+
+            <div class="panel-heading">
+                <h3>Schools</h3>
+            </div>
+
+            <div id="schools" class="list-group"></div>
+            <script type="text/x-handlebars-template" id="template-schools">
+                {{#each objects}}
+                <a href="#" class="list-group-item">
+                    <h4 class="list-group-item-heading">{{this}}</h4>
+                </a>
+                {{/each}}
+            </script>
+        </div>
+
+        <div id="mainMenu" class="content">
+            <div class="jumbotron-color">
+                <div class="container-padded">
+                    <h3>School Settings</h3>
+                    <hr>
+                    <form data-toggle="validator" data-disable="false" id="form" role="form">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="schoolNameInput" class="control-label">School name</label>
+                                    <input type="text" class="form-control" id="schoolNameInput"
+                                           placeholder="Enter school name"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="sel1">Format</label>
+                                    <select class="form-control" id="sel1">
+                                        <option value="0">Quarter</option>
+                                        <option value="1">Semester</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="GPAConstantInput" class="control-label">GPA quality values</label>
+                            <textarea class="form-control" rows="2" id="GPAConstantInput">{"A": 4,"A-": 3.75,"B+": 3.25,"B": 3,"B-": 2.75,"C+": 2.25,"C": 2,"C-": 1.75,"D+": 1.25,"D": 1,"D-": 0.75,"F": 0, "P": 0}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="honorsInput" class="control-label">Latin honors</label>
+                            <textarea class="form-control" rows="2" id="honorsInput">{"Summa cum laude": 3.9, "Magna cum laude": 3.8, "Cum laude": 3.67}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="classStandingInput" class="control-label">Class standing increment
+                                <span class="glyphicon glyphicon-question-sign popover-text"
+                                      rel="popover"
+                                      data-toggle="popover" title="Class standing increment"
+                                      data-content="<p>This is the difference in credits between classes.</p> <p>If your school uses 45 (sophomore), 90 (junior) and 135 (senior), the increment is 45.</p>">
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" placeholder="Enter class standing increment"
+                                   id="classStandingInput" required>
+                        </div>
+
+                        <button id="backBtn" class="btn btn-primary btn-md"><i class="fa fa-arrow-left"></i> Back
+                        </button>
+                        <button id="saveBtn" type="submit" class="btn btn-primary btn-md"><i class="fa fa-floppy-o"></i>
+                            Save
+                        </button>
+                        <button id="deleteBtn" class="btn btn-primary btn-md pull-right"><i class="fa fa-trash"></i>
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.$ = window.jQuery = require('./vendor/jquery/jquery-2.1.4.min.js');
+</script>
+<script src="vendor/handlebars/handlebars-v4.0.5.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="vendor/bootstrap-validator/validator.min.js"></script>
+<script src="js/settings.js"></script>
+<script type="text/javascript">
+    $('[data-toggle="popover"]').popover({
+        'trigger': 'hover',
+        'placement': 'top',
+        'html': true
+    });
+</script>
+</body>
+</html>

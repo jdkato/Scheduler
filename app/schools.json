@@ -1,0 +1,50 @@
+{
+  "Portland State University": {
+    "format": "Quarter",
+    "grading": {
+      "A": 4,
+      "A-": 3.67,
+      "B+": 3.33,
+      "B": 3,
+      "B-": 2.67,
+      "C+": 2.33,
+      "C": 2,
+      "C-": 1.67,
+      "D+": 1.33,
+      "D": 1,
+      "D-": 0.67,
+      "F": 0,
+      "P": 0
+    },
+    "classCutoff": "45",
+    "honorCutoffs": {
+      "Summa cum laude": 3.9,
+      "Magna cum laude": 3.8,
+      "Cum laude": 3.67
+    }
+  },
+  "Florida State University": {
+    "format": "Semester",
+    "grading": {
+      "A": 4,
+      "A-": 3.75,
+      "B+": 3.25,
+      "B": 3,
+      "B-": 2.75,
+      "C+": 2.25,
+      "C": 2,
+      "C-": 1.75,
+      "D+": 1.25,
+      "D": 1,
+      "D-": 0.75,
+      "F": 0,
+      "P": 0
+    },
+    "classCutoff": "30",
+    "honorCutoffs": {
+      "Summa cum laude": 3.9,
+      "Magna cum laude": 3.8,
+      "Cum laude": 3.7
+    }
+  }
+}

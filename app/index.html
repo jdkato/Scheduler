@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Scheduler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div id="currentSchedules" class="panel panel-default sidebar">
+            <div class="panel-heading">
+                <h3>Schedules</h3>
+            </div>
+            <div id="schedules" class="list-group"></div>
+            <script type="text/x-handlebars-template" id="template-schedules">
+                {{#each objects}}
+                <span href="#" class="list-group-item clearfix">
+                    <span>
+                        <button class="btn btn-xs btn-warning pull-right deleteBtn" type="button">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </span>
+                    <h4 class="list-group-item-heading">{{name}}</h4>
+                    <p class="list-group-item-text">{{school}}</p>
+                </span>
+                {{/each}}
+            </script>
+        </div>
+
+        <div id="mainMenu" class="content">
+            <div class="jumbotron jumbotron-color">
+                <div class="container">
+                    <h1>Scheduler</h1>
+                    <p>
+                        Organize your schedules and track your academic metrics!
+                    </p>
+
+                    <button id="new-schedule" type="button" class="btn btn-primary" data-toggle="modal"
+                            data-backdrop="static" data-target="#newScheduleModal">
+                        <i class="fa fa-plus"></i> New Schedule
+                    </button>
+                    <button id="settings" type="button" class="btn btn-primary">
+                        <i class="fa fa-wrench"></i> Manage Schools
+                    </button>
+                    <button id="preferences" type="button" class="btn btn-primary" data-toggle="modal"
+                            data-backdrop="static" data-target="#prefModal">
+                        <i class="fa fa-cog"></i>
+                    </button>
+
+                    <div class="modal fade" id="newScheduleModal" tabindex="-1" role="dialog">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <form data-toggle="validator" id="form" role="form">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="scheduleName" class="control-label">Schedule
+                                                        name</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Enter schedule name"
+                                                           id="scheduleName" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div id="schools" class="form-group">
+                                                    <label for="sel2" class="control-label">Select a school</label>
+                                                    <script id="template-schools" type="text/x-handlebars-template">
+                                                        <select class="form-control" id="sel2" required>
+                                                            {{#each objects}}
+                                                            <option>{{this}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </script>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="majorPrefixInput" class="control-label">
+                                                        Major prefix
+                                                        <span class="glyphicon glyphicon-question-sign"
+                                                              data-toggle="tooltip"
+                                                              title="e.g., CS 300 => CS"></span>
+                                                    </label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Separate multiple with commas"
+                                                           id="majorPrefixInput" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="minorPrefixInput" class="control-label">Minor
+                                                        prefix</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Separate multiple with commas"
+                                                           id="minorPrefixInput">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="sel1">Choose an optional starting schedule</label>
+                                                    <select class="form-control" id="sel1">
+                                                        <option>None</option>
+                                                        <option>{{this}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="yearsInput">Number of years</label>
+                                                    <input type="text" class="form-control"
+                                                           placeholder="4"
+                                                           id="yearsInput" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button id="close-schedule" type="button" class="btn btn-default"
+                                                data-dismiss="modal"><i
+                                                class="fa fa-arrow-left"></i> Back
+                                        </button>
+
+                                        <button id="open-schedule" type="submit" class="btn btn-primary"><i
+                                                class="fa fa-table"></i> Open
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="prefModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Display Preferences</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form data-toggle="validator" id="form2" role="form">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="totalCredits" type="checkbox" class="optionCheck"> Total Credits
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="class" type="checkbox" class="optionCheck"> Class Standing
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="institutionalGPA" type="checkbox" class="optionCheck"> Institutional GPA
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="minorGPA" type="checkbox" class="optionCheck"> Minor GPA(s)
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="totalGPA" type="checkbox" class="optionCheck"> Cumulative GPA
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="majorGPA" type="checkbox" class="optionCheck"> Major GPA(s)
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input id="honors" type="checkbox" class="optionCheck"> Latin Honors
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="closePref" type="button" class="btn btn-default"
+                                            data-dismiss="modal"><i
+                                            class="fa fa-arrow-left"></i> Back
+                                    </button>
+                                    <button id="savePref" type="submit" class="btn btn-primary">
+                                        <i class="fa fa-floppy-o"></i> Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.$ = window.jQuery = require('./vendor/jquery/jquery-2.1.4.min.js');
+</script>
+<script src="vendor/handlebars/handlebars-v4.0.5.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/util.js"></script>
+<script src="vendor/bootstrap-validator/validator.min.js"></script>
+<script src="js/index.js"></script>
+<script type="text/javascript">
+    $('[data-toggle="tooltip"]').tooltip({
+        'placement': 'top',
+        'html': true
+    });
+</script>
+</body>
+</html>

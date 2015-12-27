@@ -1,0 +1,46 @@
+html, body {
+    height: 100%;
+}
+.jumbotron-color {
+    background-color: #F7F7F7;
+}
+body {
+    overflow: hidden;
+}
+.header {
+    padding: 10px;
+}
+.container-padded {
+    padding: 10px;
+}
+.sidebar {
+    float: left;
+    width: 40%;
+    padding-bottom: 1000px;
+    margin-bottom: -1000px;
+}
+.content {
+    float: right;
+    width: 60%;
+    padding-bottom: 1000px;
+    margin-bottom: -1000px;
+}
+.clear {
+    clear: both;
+}
+.popover-title, .popover-content, .modal-title, .modal-content {
+    color: #494949;
+}
+#mainMenu {
+    background-color: #F7F7F7;
+}
+#currentSchedules {
+    background-color: #FFF;
+}
+textarea {
+    resize: none;
+}
+span.list-group-item:hover {
+    /*background-color: #f5f5f5;*/
+    cursor: pointer;
+}

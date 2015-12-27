@@ -1,0 +1,11 @@
+{
+  "options": {
+    "totalCredits": true,
+    "class": true,
+    "institutionalGPA": true,
+    "minorGPA": true,
+    "totalGPA": true,
+    "majorGPA": true,
+    "honors": true
+  }
+}

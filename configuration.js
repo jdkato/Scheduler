@@ -5,9 +5,10 @@ var mainConf = new nconf.Provider();
 var optConf = new nconf.Provider();
 var name2Conf = {"sche" : scheConf, "main": mainConf, "opt": optConf};
 
-scheConf.file({file: './app/schedules.json'});
-mainConf.file({file: './app/schools.json'});
-optConf.file({file: './app/options.json'});
+
+scheConf.file({file: __dirname + '/app/schedules.json'});
+mainConf.file({file: __dirname + '/app/schools.json'});
+optConf.file({file: __dirname + '/app/options.json'});
 
 function saveSettings(settingKey, settingValue, file) {
     var conf = name2Conf[file];

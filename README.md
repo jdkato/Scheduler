@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/jdkato/scheduler.js.svg?branch=master)](https://travis-ci.org/jdkato/scheduler.js)
+# scheduler.js
 
-# Introduction
+[![Build Status](https://travis-ci.org/jdkato/scheduler.js.svg?branch=master)](https://travis-ci.org/jdkato/scheduler.js)
 
 This is an [Electron](http://electron.atom.io/)-based application designed to be similar to what many colleges and universities refer to as DARS (Degree Audit Reporting System). Essentially, it's a course planner with the ability to perform various GPA- and credit-related calculations.
 

@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jdkato/scheduler.svg?branch=master)](https://travis-ci.org/jdkato/scheduler)
+[![Build Status](https://travis-ci.org/jdkato/scheduler.js.svg?branch=master)](https://travis-ci.org/jdkato/scheduler.js)
 
 # Introduction
 

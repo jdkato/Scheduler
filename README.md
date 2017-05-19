@@ -1,6 +1,4 @@
-# scheduler
-
-[![Build Status](https://travis-ci.org/jdkato/Scheduler.svg?branch=master)](https://travis-ci.org/jdkato/Scheduler) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/jdkato/Scheduler/blob/master/LICENSE)
+# scheduler [![Build Status](https://travis-ci.org/jdkato/Scheduler.svg?branch=master)](https://travis-ci.org/jdkato/Scheduler) [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/jdkato/Scheduler/blob/master/LICENSE)
 
 This is an [Electron](http://electron.atom.io/)-based application designed to act as a course planner with the ability to perform various GPA- and credit-related calculations.
 
